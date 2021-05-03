@@ -1,0 +1,16 @@
+.layer-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 20px;
+  color: #040a5c;
+  margin-bottom: 3px;
+}
+
+.layer-card {
+  background-color: #fafafa;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 5px;
+  position: relative;
+}
