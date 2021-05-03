@@ -21,18 +21,6 @@
     <link rel="stylesheet" href="./lib/css/style.css" />
 
     <title>GIS portal</title>
-
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      #map {
-        width: 100%;
-        height: 100vh;
-      }
-    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -50,12 +38,13 @@
                   <div class="custom-control custom-switch">
                     <input
                       type="checkbox"
-                      class="custom-control-input"
-                      id="building-switch"
+                      class="custom-control-input layer-card-cb"
+                      id="building-layer"
+                      checked="checked"
                     />
                     <label
                       class="custom-control-label"
-                      for="building-switch"
+                      for="building-layer"
                     ></label>
                   </div>
                 </div>
@@ -71,45 +60,15 @@
               <label for="opacity">
                 <b class="mr-5 mt-2">Opacity:</b>
               </label>
-              <input type="range" class="form-control-range opacity" />
-            </div>
-          </div>
-
-          <!-- layer 2 -->
-          <div class="card-body layer-card">
-            <div class="row">
-              <div class="col-4 thumbnails">
-                <img src="./img/Building 2020.PNG" alt="" class="img-fluid" />
-              </div>
-
-              <div class="col-8">
-                <div style="display: flex; justify-content: space-between">
-                  <span class="d-block mt-2 layer-title">Layer name</span>
-                  <div class="custom-control custom-switch">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customSwitch1"
-                    />
-                    <label
-                      class="custom-control-label"
-                      for="customSwitch1"
-                    ></label>
-                  </div>
-                </div>
-
-                <div class="description">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Accusantium itaque quidem impedit earum,
-                </div>
-              </div>
-            </div>
-
-            <div style="display: flex">
-              <label for="opacity">
-                <b class="mr-5 mt-2">Opacity:</b>
-              </label>
-              <input type="range" class="form-control-range opacity" />
+              <input
+                type="range"
+                class="form-control-range opacity"
+                value="100"
+                min="0"
+                max="100"
+                data-toggle="tooltip"
+                title="Opacity"
+              />
             </div>
           </div>
         </div>
@@ -118,6 +77,12 @@
     </div>
   </body>
 </html>
+<!-- jquery  -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous"
+></script>
 
 <!-- bootstrap js  -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
@@ -129,85 +94,6 @@
 <!-- bu data  -->
 <script src="./lib/bu_data.js"></script>
 
-<script>
-  var map = L.map("map").setView([15.6261, -61.44361], 15);
-
-  var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map);
-
-  var dark = L.tileLayer(
-    "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
-    {
-      maxZoom: 20,
-      attribution:
-        '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-    }
-  );
-
-  var waterColor = L.tileLayer(
-    "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
-    {
-      attribution:
-        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      subdomains: "abcd",
-      minZoom: 1,
-      maxZoom: 16,
-      ext: "jpg",
-    }
-  );
-
-  var googleStreets = L.tileLayer(
-    "http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
-    {
-      maxZoom: 20,
-      subdomains: ["mt0", "mt1", "mt2", "mt3"],
-    }
-  );
-
-  var googleSat = L.tileLayer(
-    "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    {
-      maxZoom: 20,
-      subdomains: ["mt0", "mt1", "mt2", "mt3"],
-    }
-  );
-
-  var marker = L.marker([15.6261, -61.44361], 13)
-    .addTo(map)
-    .bindPopup("A pretty CSS3 popup.<br> Easily customizable.");
-
-  var buLayer = L.geoJson(bu_data, {
-    style: {
-      color: "red",
-      fillColor: "blue",
-      fillOpacity: "0.8",
-    },
-
-    onEachFeature: function (feature, layer) {
-      layer.bindPopup("BU: " + feature.properties.BU);
-    },
-
-    // filter: function (feature) {
-    //   if (feature.properties.TYPE === "MA_1") {
-    //     return true;
-    //   }
-    // },
-  }).addTo(map);
-
-  var baseMaps = {
-    OSM: osm,
-    "Dark Map": dark,
-    "Water Color Map": waterColor,
-    "Google Street": googleStreets,
-    "Google Satellite": googleSat,
-  };
-
-  var overlayMaps = {
-    Marker: marker,
-    "Building Layer": buLayer,
-  };
-
-  L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-</script>
+<!-- main js files  -->
+<script src="./lib/js/layer-control.js"></script>
+<script src="./lib/js/leaflet-control.js"></script>
