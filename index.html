@@ -25,53 +25,7 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3 left-sidebar">
-          <!-- layer 1  -->
-          <div class="card-body layer-card">
-            <div class="row">
-              <div class="col-4 thumbnails">
-                <img src="./img/Building 2020.PNG" alt="" class="img-fluid" />
-              </div>
-              <div class="col-8">
-                <div style="display: flex; justify-content: space-between">
-                  <span class="d-block mt-2 layer-title">Building</span>
-                  <div class="custom-control custom-switch">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input layer-card-cb"
-                      id="building-layer"
-                      checked="checked"
-                    />
-                    <label
-                      class="custom-control-label"
-                      for="building-layer"
-                    ></label>
-                  </div>
-                </div>
-
-                <div class="description">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Accusantium itaque quidem impedit earum,
-                </div>
-              </div>
-            </div>
-
-            <div style="display: flex">
-              <label for="opacity">
-                <b class="mr-5 mt-2">Opacity:</b>
-              </label>
-              <input
-                type="range"
-                class="form-control-range opacity"
-                value="100"
-                min="0"
-                max="100"
-                data-toggle="tooltip"
-                title="Opacity"
-              />
-            </div>
-          </div>
-        </div>
+        <div class="col-md-3 left-sidebar"></div>
         <div class="col-md-9" id="map"></div>
       </div>
     </div>
@@ -95,5 +49,6 @@
 <script src="./lib/bu_data.js"></script>
 
 <!-- main js files  -->
-<script src="./lib/js/layer-control.js"></script>
+<script src="./lib/js/main.js"></script>
+<script src="./lib/js/layers.js"></script>
 <script src="./lib/js/leaflet-control.js"></script>
