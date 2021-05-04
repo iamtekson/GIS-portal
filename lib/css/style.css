@@ -31,3 +31,15 @@ body {
   padding-bottom: 100px;
   box-shadow: 5px 0px 5px 0px rgba(69, 67, 69, 0.63);
 }
+
+.legend {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  background-color: #ffffff;
+  padding: 1rem;
+  transition: margin-right 0.55s;
+  max-width: 150px;
+  max-height: 400px;
+  overflow-y: auto;
+}
