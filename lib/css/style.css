@@ -43,3 +43,39 @@ body {
   max-height: 400px;
   overflow-y: auto;
 }
+
+.map-coordinate {
+  padding: 10px 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  background-color: #0d6efd;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.basic-functions {
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+}
+
+.basic-functions .btns {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  background-color: #ffffff;
+  margin: 1px;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.73);
+}
+
+.basic-functions .fas {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

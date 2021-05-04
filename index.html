@@ -17,6 +17,12 @@
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     />
 
+    <!-- fontawesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
     <!-- style css  -->
     <link rel="stylesheet" href="./lib/css/style.css" />
 
@@ -27,7 +33,40 @@
       <div class="row">
         <div class="col-md-3 left-sidebar"></div>
         <div class="col-md-9" id="map">
+          <div class="leaflet-control map-coordinate"></div>
           <div class="leaflet-control legend"></div>
+          <div class="leaflet-control basic-functions">
+            <div
+              class="default-view btns"
+              data-toggle="tooltip"
+              title="Default zoom level (Home)"
+            >
+              <i class="fas fa-home"></i>
+            </div>
+            <div class="full-screen btns">
+              <i
+                class="fas fa-expand-arrows-alt"
+                data-toggle="tooltip"
+                title="View map on full screen"
+              ></i>
+            </div>
+
+            <div class="layer-info btns">
+              <i
+                class="fas fa-info"
+                data-toggle="tooltip"
+                title="Info about layer"
+              ></i>
+            </div>
+
+            <div class="print-map btns">
+              <i
+                class="fas fa-print"
+                data-toggle="tooltip"
+                title="Print map"
+              ></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
